@@ -12,4 +12,8 @@ class QuestionThreeSpec extends FlatSpec with Matchers {
   "The firstForLoop method" should "return List(1, 2, 3) when given List(1, 2, 3, 4, 5, 6) and 3" in {
     assert(firstForLoop(List(1, 2, 3, 4, 5, 6), 3) == List(1, 2, 3))
   }
+
+  "The firstFoldLeft method" should "return List(1, 2, 3) when given List(1, 2, 3, 4, 5, 6) and 3" in {
+    assert(firstFoldLeft(List(1, 2, 3, 4, 5, 6), 3) == List(1, 2, 3))
+  }
 }

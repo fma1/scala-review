@@ -17,14 +17,33 @@ object QuestionThree {
   }
 
   def firstForLoop[A](items: List[A], count: Int): List[A] = {
-    val lstBuf: ListBuffer[A] = ListBuffer[A]()
-    var curr: List[A] = items
+    // Edge case
+    if (items.length < count) items
+    else {
+      val lstBuf: ListBuffer[A] = ListBuffer[A]()
+      var curr: List[A] = items
 
-    for (i <- 1 to count) {
-      lstBuf += curr.head
-      curr = curr.tail
+      for (i <- 1 to count) {
+        lstBuf += curr.head
+        curr = curr.tail
+      }
+
+      lstBuf.toList
     }
+  }
 
-    lstBuf.toList
+  def firstFoldLeft[A](items: List[A], count: Int): List[A] = {
+    if (items.length < count) items
+    else {
+      var innerCount = 0
+      val foldFunc: (List[A], A) => List[A] =
+        (acc, next) => {
+          val result: List[A] = if (innerCount >= count) acc else acc :+ next
+          innerCount = innerCount + 1
+          result
+        }
+
+      items.foldLeft(List[A]())(foldFunc)
+    }
   }
 }
