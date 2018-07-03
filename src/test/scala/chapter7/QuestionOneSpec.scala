@@ -24,4 +24,12 @@ class QuestionOneSpec extends FlatSpec with Matchers {
   "The fibonacciStream" should "print out the first 6 fibonacci numbers when we take 7" in {
     assert(fibonacciStream.take(7).toList == List(1, 1, 2, 3, 5, 8, 13))
   }
+
+  "The fibNext method" should "return Some(13) when given 8" in {
+    assert(fibNext(8) == Some(13))
+  }
+
+  "The fibNext method" should "return None when given 9" in {
+    assert(fibNext(9) == None)
+  }
 }

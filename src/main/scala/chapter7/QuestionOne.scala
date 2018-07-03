@@ -83,4 +83,12 @@ object QuestionOne {
   }
 
   val fibonacciStream: Stream[Int] = 1 #:: 1 #:: fibonacciStream.zip(fibonacciStream.tail).map(n => n._1 + n._2)
+
+  def fibNext(fibNum: Int): Option[Int] = {
+    val lessThan = fibonacciStream takeWhile { _ <= fibNum }
+    val revLst = lessThan.toList.reverse
+
+    if (revLst.head != fibNum) None
+    else Some(fibonacciStream.take(revLst.length + 1).toList.reverse.head)
+  }
 }
