@@ -13,4 +13,12 @@ class QuestionTwoSpec extends FlatSpec with Matchers {
     myLinkedList.foreach(myFunc)
     assert(sum == 55)
   }
+
+  "The LinkedList class' map method" should "work" in {
+    val myLinkedList = MyLinkedList[Int](1, 2, 3, 4, 5)
+    val myLinkedList2 = MyLinkedList[Int](2, 3, 4, 5, 6)
+    val func: Int => Int = x => x + 1
+
+    assert(myLinkedList.map[Int](func).equals(myLinkedList2))
+  }
 }
